@@ -1,0 +1,11 @@
+name: main-ci
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  docker-build-and-push-main:
+    uses: ./.github/workflows/docker-build-and-push.template.yml
+
