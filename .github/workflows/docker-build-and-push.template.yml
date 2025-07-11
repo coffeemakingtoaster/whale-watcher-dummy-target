@@ -46,7 +46,7 @@ jobs:
           platforms: ${{ matrix.platform }}
           labels: ${{ steps.meta.outputs.labels }}
           outputs: type=image,push-by-digest=true,name-canonical=true,push=true,name=${{ env.image }}
-          file: ./example.Dockerfile
+          file: ./prod.Dockerfile
 
       - name: Export digest
         run: |

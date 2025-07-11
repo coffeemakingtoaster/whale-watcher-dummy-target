@@ -1,0 +1,23 @@
+{
+  "name": "whale-watcher-dummy-target",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/coffeemakingtoaster/whale-watcher-dummy-target#readme",
+  "bugs": {
+    "url": "https://github.com/coffeemakingtoaster/whale-watcher-dummy-target/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coffeemakingtoaster/whale-watcher-dummy-target.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}
