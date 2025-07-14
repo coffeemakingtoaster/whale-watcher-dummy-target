@@ -6,6 +6,14 @@ on:
       - main
 
 jobs:
-  docker-build-and-push-main:
+  docker-build-and-push-main-dummy:
     uses: ./.github/workflows/docker-build-and-push.template.yml
+    with:
+      name: dummy
+      dockerfile: ./prod.Dockerfile
+  docker-build-and-push-main-base:
+    uses: ./.github/workflows/docker-build-and-push.template.yml
+    with:
+      name: base
+      dockerfile: ./base.Dockerfile
 
