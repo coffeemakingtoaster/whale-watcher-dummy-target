@@ -11,6 +11,7 @@ jobs:
     with:
       name: dummy
       dockerfile: ./prod.Dockerfile
+
   docker-build-and-push-main-base:
     uses: ./.github/workflows/docker-build-and-push.template.yml
     with:
