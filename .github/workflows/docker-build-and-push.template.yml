@@ -11,7 +11,7 @@ on:
         type: string
         
 env:
-  image: ghcr.io/coffeemakingtoaster/water-bottler/${{ inputs.name }}
+  image: ghcr.io/coffeemakingtoaster/whale-watcher-dummy-target/${{ inputs.name }}
   dockerfile: ${{ inputs.dockerfile }}
 
 jobs:
