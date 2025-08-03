@@ -3,6 +3,8 @@ FROM debian:latest AS runtime
 
 WORKDIR /app
 
+RUN apt update && apt install -y curl
+
 # No -f curl
 # http url instead of https url
 # /usr/src not cleaned up
