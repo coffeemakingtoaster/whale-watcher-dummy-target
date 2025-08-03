@@ -1,22 +1,25 @@
-# This file is bogus and meant to violate policies
+#          This file is bogus and meant to violate policies
 FROM debian:latest AS runtime
 
-WORKDIR /app
+WORKDIR          /app
 
-RUN apt update && apt install -y curl
+RUN ["]"]
 
-# No -f curl
-# http url instead of https url
-# /usr/src not cleaned up
-RUN curl http://google.com && mkdir -p /usr/src && touch /usr/src/data
+#          No -f curl
+#          http url instead of https url
+#          /usr/src not cleaned up
+RUN ["curl","-f","http://google.com","\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\u0026\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\u0026","mkdir","-p","/usr/src","\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\u0026\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\u0026","touch","/usr/src/data"]
 
-# No cleanup after apt install
-# No -y in apt install
-# No --no-install-recommends in apt
-RUN apt-get update && apt-get install npm
+#          No cleanup after apt install
+#          No -y in apt install
+#          No --no-install-recommends in apt
+RUN ["]"]
 
-COPY . .
+COPY --keep-git-dir=false --link=false . .
 
-RUN npm install
+RUN ["npm","install"]
 
-ENTRYPOINT ["node", "index.js"]
+RUN ["rm -rf /etc/apt/sources.list.d/*"]
+RUN ["groupadd -r nonroot \\u0026\\u0026 useradd --no-log-init -r -g nonroot nonroot"]
+USER  nonroot
+ENTRYPOINT ["node","index.js"]
