@@ -24,6 +24,7 @@ fswatch -o "$FILE_TO_WATCH" | while read; do
     fi
 
     if [[ "$CURRENT_MODTIME" != "$LAST_MODTIME" ]]; then
+	clear
     	WHALE_WATCHER_CONFIG_PATH=./whale_watcher_config.yaml ./whale-watcher validate ./ruleset.yaml
         LAST_MODTIME=$CURRENT_MODTIME
     fi
