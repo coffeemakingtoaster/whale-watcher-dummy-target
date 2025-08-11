@@ -1,14 +1,9 @@
 #!/bin/bash
 
-echo "(Re-)Installing whale-watcher"
-rm -rf ./whale_watcher
-    if [ "$(uname)" == "Darwin" ]; then
-	curl -LO --silent https://github.com/coffeemakingtoaster/whale-watcher/releases/download/pre-release/macos.tar.gz && cp macos.tar.gz download.tar.gz
-    else
-	curl -LO --silent https://github.com/coffeemakingtoaster/whale-watcher/releases/download/pre-release/linux.tar.gz && cp linux.tar.gz download.tar.gz
-    fi
-
-tar -xvzf download.tar.gz -C . && chmod +x ./whale-watcher 
+if ! [ -x "$(command -v whale-watcher)" ]; then
+  echo "Whale watcher not installed, clone the repo and use make install"
+  exit 1
+fi
 
 FILE_TO_WATCH="./prod.Dockerfile"
 
@@ -25,7 +20,7 @@ fswatch -o "$FILE_TO_WATCH" | while read; do
 
     if [[ "$CURRENT_MODTIME" != "$LAST_MODTIME" ]]; then
 	clear
-    	WHALE_WATCHER_CONFIG_PATH=./whale_watcher_config.yaml ./whale-watcher validate ./ruleset.yaml
+    	WHALE_WATCHER_CONFIG_PATH=./whale_watcher_config.yaml whale-watcher validate ./ruleset.yaml
         LAST_MODTIME=$CURRENT_MODTIME
     fi
 done
