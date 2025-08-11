@@ -9,6 +9,8 @@ FILE_TO_WATCH="./prod.Dockerfile"
 
 echo "Watching $FILE_TO_WATCH for changes..."
 
+WHALE_WATCHER_CONFIG_PATH=./whale_watcher_config.yaml whale-watcher validate ./ruleset.yaml
+
 fswatch -o "$FILE_TO_WATCH" | while read; do
     # Optional: add a small delay to ensure the file has been fully written
     sleep 0.2
